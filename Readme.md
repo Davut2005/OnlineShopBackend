@@ -1,11 +1,13 @@
-# Fullstack Online Shop
+# Online Shop Backend
 
-### This is the fullstack application for Online Shopping platform
+### This is the backend application for Online Shopping platform
 
-The tech stack is :
-Python, FastAPI for API, SQLAlchemy for interaction with database
+The tech stack is : Python, FastAPI for API, SQLAlchemy for interaction with database
 
 Database: PostgreSQL
+
+## The frontend of the application is :
+https://github.com/Davut2005/OnlineShopFrontend.git
 
 ## Run the project
 

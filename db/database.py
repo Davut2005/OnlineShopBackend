@@ -2,20 +2,15 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from core.config import settings
+from sqlmodel import Session, SQLModel
 
-Base = declarative_base()
 
 engine = create_engine( settings.DATABASE_URL )
 
-SessionLocaL = sessionmaker( autoflush= False, bind = engine )
-
 def get_db ():
-    db = SessionLocaL()
-    try:
-        yield db
-    finally:
-        db.close()
+    with Session(engine) as session:
+        yield session
 
 
-def create_tables():
-    Base.metadata.create_all(bind=engine)
+def create_db_tables():
+    SQLModel.metadata.create_all(bind=engine)

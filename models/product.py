@@ -1,14 +1,15 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship
-from db.database import Base
+from sqlmodel import SQLModel, Relationship, Field, Integer, String
+from typing import Optional
 from category import Category
+from order import Order
+from order_item import OrderItem
 
-class Product (Base):
-    __tablename__ = "products"
+class Product (SQLModel, table=True):
 
-    id = Column( Integer, primary_key=True, index= True )
-    name = Column( String, index=True )
-    category_name = Column( String, ForeignKey("categories.name") )
+    id: Optional[int] = Field( default=None , primary_key=True, index= True )
+    name: str = Field( String, index=True )
+    category_name: sstr = Field( String, foreign_key="categories.name" )
 
-    category = relationship("Category", back_populates="product")
+    category: "Category" = Relationship( back_populates="products")
+    orders: list["Order"] = Relationship( back_populates="products", link_model=OrderItem )
 

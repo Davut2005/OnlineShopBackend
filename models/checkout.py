@@ -1,13 +1,14 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship
-from db.database import Base
+from sqlmodel import SQLModel, Relationship, Field, String
 from product import Product
 from user import User
+from order import Order
 
-class Checkouts(Base):
-    __tablename__ = "checkouts"
+class Checkouts(SQLModel, table = True):
 
-    id = Column(Integer, primary_key=True, index= True)
-    user_id = Column(Integer)
-    order_id = Column(Integer, nullable= False, unique= True)
-    amount = Column(Integer)
+    id: int = Field( default=None, primary_key=True, index= True)
+    user_id: int = Field( foreign_key="user.id" )
+    order_id: int = Field(foreign_key="order.id", nullable= False, unique= True)
+    amount : int
+
+    user : "User" = Relationship( back_populates="checkouts" )
+    order: "Order" = Relationship(back_populates="checkouts")

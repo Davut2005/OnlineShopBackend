@@ -1,12 +1,11 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship
-from db.database import Base
-from product import Product
-from user import User
+from sqlmodel import Relationship, SQLModel, Field, String
+from typing import Optional
+from order import Order
 
-class User(Base):
-    __tablename__ = "users"
+class User(SQLModel, table = True):
 
-    id = Column(Integer, primary_key=True, index= True)
-    name = Column(String, index= True)
-    email = Column(String, nullable= False, unique= True)
+    id: Optional[int] = Field(default=None ,primary_key=True, index= True)
+    name: str = Field(String, index= True)
+    email: str = Field(String, nullable= False, unique= True)
+
+    orders: list["Order"] = Relationship( back_populates = "user" )

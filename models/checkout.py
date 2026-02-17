@@ -3,7 +3,7 @@ from product import Product
 from user import User
 from order import Order
 
-class Checkouts(SQLModel, table = True):
+class Checkout(SQLModel, table = True):
 
     id: int = Field( default=None, primary_key=True, index= True)
     user_id: int = Field( foreign_key="user.id" )

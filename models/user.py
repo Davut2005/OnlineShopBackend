@@ -1,6 +1,7 @@
 from sqlmodel import Relationship, SQLModel, Field, String
 from typing import Optional
 from order import Order
+from checkout import Checkouts
 
 class User(SQLModel, table = True):
 
@@ -9,3 +10,4 @@ class User(SQLModel, table = True):
     email: str = Field(String, nullable= False, unique= True)
 
     orders: list["Order"] = Relationship( back_populates = "user" )
+    checkouts: list["Checkouts"] = Relationship( back_populates = "user" )

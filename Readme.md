@@ -2,9 +2,9 @@
 
 ### This is the backend application for Online Shopping platform
 
-The tech stack is : Python, FastAPI for API, SQLAlchemy for interaction with database
+The tech stack is : Python, FastAPI for API, SQLmodel for interaction with database
 
-Database: PostgreSQL
+Database: Supabase (PostgreSQL)
 
 ## The frontend of the application is :
 https://github.com/Davut2005/OnlineShopFrontend.git

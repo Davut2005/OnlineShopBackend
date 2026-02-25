@@ -1,8 +1,11 @@
 from sqlmodel import SQLModel, Relationship, Field, String
-from product import Product
-from user import User
-from order_item import OrderItem
-from checkout import Checkouts
+from .order_item import OrderItem
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING :
+    from .product import Product
+    from .user import User
+    from .checkout import Checkout
 
 class Order(SQLModel, table=True):
 
@@ -11,7 +14,10 @@ class Order(SQLModel, table=True):
 
     user : "User" = Relationship( back_populates = "orders"  )
     products: list["Product"] = Relationship( back_populates="orders", link_model=OrderItem )
-    checkouts: list["Checkouts"] = Relationship( back_populates = "order" )
+    checkouts: list["Checkout"] = Relationship( back_populates = "order" )
+
+
+
     
     
 

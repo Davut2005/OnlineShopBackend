@@ -1,6 +1,9 @@
 from sqlmodel import SQLModel, Relationship, Field, Integer, String
-from typing import Optional
-from product import Product
+from typing import Optional, TYPE_CHECKING
+
+if TYPE_CHECKING :
+    from .product import Product
+
 
 class Category (SQLModel, table=True):
 
@@ -8,3 +11,7 @@ class Category (SQLModel, table=True):
     name: str = Field( String, index= True )
 
     products: list["Product"] = Relationship( back_populates="category")
+
+
+
+

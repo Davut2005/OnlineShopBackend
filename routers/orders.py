@@ -47,7 +47,7 @@ async def getOrders(
 async def updateOrder(
     id: int,
     order_data: Order,
-    db: Session = Depends
+    db: Session = Depends(get_db)
 ):
     order = db.get( Order, id )
 

@@ -1,7 +1,9 @@
 from sqlmodel import SQLModel, Relationship, String, Field
-from product import Product
-from order import Order
-from typing import Optional
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING :
+    from .product import Product
+    from .order import Order
 
 class OrderItem( SQLModel, table=True ):
 
@@ -11,3 +13,6 @@ class OrderItem( SQLModel, table=True ):
 
     order: "Order" = Relationship(back_populates="orderitems")
     product : "Product" = Relationship(back_populates="orderitems")
+
+
+

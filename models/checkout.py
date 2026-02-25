@@ -1,7 +1,9 @@
 from sqlmodel import SQLModel, Relationship, Field, String
-from product import Product
-from user import User
-from order import Order
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING :
+    from .user import User
+    from .order import Order
 
 class Checkout(SQLModel, table = True):
 
@@ -12,3 +14,6 @@ class Checkout(SQLModel, table = True):
 
     user : "User" = Relationship( back_populates="checkouts" )
     order: "Order" = Relationship(back_populates="checkouts")
+
+
+

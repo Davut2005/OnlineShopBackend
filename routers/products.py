@@ -47,7 +47,7 @@ async def getProducts(
 async def updateProduct(
     id: int,
     product_data: Product,
-    db: Session = Depends
+    db: Session = Depends(get_db)
 ):
     product = db.get( Product, id )
 

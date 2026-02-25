@@ -47,7 +47,7 @@ async def getUser(
 async def updateUser(
     id: int,
     user_data: User,
-    db: Session = Depends
+    db: Session = Depends(get_db)
 ):
     user = db.get( User, id )
 

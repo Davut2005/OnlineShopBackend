@@ -47,7 +47,7 @@ async def getCheckouts(
 async def updateCheckout(
     id: int,
     checkout_data: Checkout,
-    db: Session = Depends
+    db: Session = Depends(get_db)
 ):
     checkout = db.get( Checkout, id )
 

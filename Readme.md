@@ -11,6 +11,8 @@ https://github.com/Davut2005/OnlineShopFrontend.git
 
 ## Run the project
 
+### The requirements of the projects are in pyproject.toml 
+
 ### Install dependencies:
 pip install uv
 uv sync
